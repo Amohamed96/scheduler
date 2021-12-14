@@ -5,7 +5,6 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
 import "index.scss";
-
 import Button from "components/Button";
 import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
@@ -184,3 +183,13 @@ storiesOf("Button", module)
         <Appointment time="5pm" />
       </Fragment>
     ))
+.add("Appointment Booked", () => (
+  <Fragment>
+    <Appointment
+      id={1}
+      time="4pm"
+      interview={{ student: "Lydia Miller-Jones", interviewer: "YO" }}
+    />
+    <Appointment time="5pm" />
+  </Fragment>
+))
