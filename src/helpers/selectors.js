@@ -1,41 +1,39 @@
-export function getAppointmentsForDay(state, day) {
-  let result = [];
-  let appointmentsArray = []
-  for (const obj of state.days) {
-    if (obj.name === day) {
-      appointmentsArray = obj.appointments;
-    }
-  }
-
-  for (const val of appointmentsArray) {
-    result.push(state.appointments[String(val)]);
-  }
-  return result;
-}
-
 export function getInterview(state, interview) {
-  if (interview) {
-    let id_interviewer = interview.interviewer;
-    let student = interview.student;
+  if (interview !== null) {
     return {
-      student,
-      interviewer: state.interview[String(id_interviewer)]
+      student: interview.student,
+      interviewer: state.interviewers[`${interview.interviewer}`],
     };
   }
-  return null
-}
 
-export function getInterviewsForDay(state, day) {
-  let result = [];
-  let interviewersArray = []
-  for (const obj of state.days) {
-    if (obj.name === day) {
-      interviewersArray = obj.interviewers;
+  return null;
+}
+export function getInterviewersForDay(state, day) {
+  const daysarr = state.days;
+  const interviewersForAppointments = [];
+
+  for (const currentDay of daysarr) {
+    if (currentDay.name === day) {
+      currentDay.interviewers.forEach((interviewerId) => {
+        interviewersForAppointments.push(state.interviewers[interviewerId]);
+      });
     }
   }
 
-  for (const val of interviewersArray) {
-    result.push(state.interview[String(val)]);
+  return interviewersForAppointments;
+}
+
+export function getAppointmentsForDay(state, day) {
+  const daysarr = state.days;
+  const appsarray = [];
+
+  for (const currentDay of daysarr) {
+    if (currentDay.name === day) {
+      currentDay.appointments.forEach((appointmentId) => {
+        appsarray.push(state.appointments[appointmentId]);
+      });
+    }
   }
-  return result;
+
+  return appsarray;
 }

@@ -40,7 +40,6 @@ export default function useApplicationData(props) {
   };
 
   async function bookInterview(id, interview) {
-    console.log(id, interview);
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -60,7 +59,6 @@ export default function useApplicationData(props) {
   }
 
   async function cancelInterview(id, interview) {
-    console.log(id, interview);
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
