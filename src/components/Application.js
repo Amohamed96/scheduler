@@ -15,6 +15,7 @@ export default function Application(props) {
   const interviewers = getInterviewersForDay(state, state.day);  
   const schedule = appointments.map((appointment) => {
    const interview = getInterview(state, appointment.interview);
+
     return (
       <Appointment
         key={appointment.id}
@@ -38,7 +39,10 @@ export default function Application(props) {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-        <DayList days={state.days} day={state.day} setDay={setDay}/>
+        <DayList 
+          days={state.days} 
+          day={state.day} 
+          setDay={setDay}/>
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
