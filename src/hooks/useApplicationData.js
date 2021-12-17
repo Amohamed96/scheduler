@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 export default function useApplicationData(props) {
 
   const setDay = (day) => setState({ ...state, day });
-  
   const [state, setState] = useState({
     day: "Monday",
     days: [],
     appointments: {},
   });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     Promise.all([

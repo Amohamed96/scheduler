@@ -1,13 +1,18 @@
-export function getInterview(state, interview) {
-  if (interview !== null) {
-    return {
-      student: interview.student,
-      interviewer: state.interviewers[`${interview.interviewer}`],
-    };
+export function getAppointmentsForDay(state, day) {
+  const daysarr = state.days;
+  const appsarray = [];
+
+  for (const currentDay of daysarr) {
+    if (currentDay.name === day) {
+      currentDay.appointments.forEach((appointmentId) => {
+        appsarray.push(state.appointments[appointmentId]);
+      });
+    }
   }
 
-  return null;
+  return appsarray;
 }
+
 export function getInterviewersForDay(state, day) {
   const daysarr = state.days;
   const interviewersForAppointments = [];
@@ -23,17 +28,13 @@ export function getInterviewersForDay(state, day) {
   return interviewersForAppointments;
 }
 
-export function getAppointmentsForDay(state, day) {
-  const daysarr = state.days;
-  const appsarray = [];
-
-  for (const currentDay of daysarr) {
-    if (currentDay.name === day) {
-      currentDay.appointments.forEach((appointmentId) => {
-        appsarray.push(state.appointments[appointmentId]);
-      });
-    }
+export function getInterview(state, interview) {
+  if (interview !== null) {
+    return {
+      student: interview.student,
+      interviewer: state.interviewers[`${interview.interviewer}`],
+    };
   }
 
-  return appsarray;
+  return null;
 }
