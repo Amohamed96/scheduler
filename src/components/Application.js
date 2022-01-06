@@ -6,8 +6,8 @@ import DayList from "./DayList";
 import useApplicationData from "hooks/useApplicationData";
 import { getAppointmentsForDay } from "../helpers/selectors";
 import { getInterview, getInterviewersForDay } from "../helpers/selectors";
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 export default function Application(props) {
   const { state, setDay, bookInterview, cancelInterview } = useApplicationData();
@@ -54,7 +54,6 @@ export default function Application(props) {
         {schedule}
         <Appointment key="last" time="5pm" />
       </section>
-
     </main>
   );
 }
